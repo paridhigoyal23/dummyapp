@@ -1,15 +1,17 @@
 const express = require("express");
-const http = require("http");
 const path = require("path");
 
 const app = express();
 
-app.use(express.static(__dirname + "/dist/dummyapp"));
+// Serve static files from the 'dist' directory
+app.use(express.static(path.join(__dirname, "dist")));
 
-app.get("/*", (req, res) => res.sendFile(path.join(__dirname)));
+// Handle all other requests by sending the 'index.html' file
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist/dummyapp/index.html"));
+});
 
-const server = http.createServer(app);
-
-server.listen(80, () => {
-  console.log("Server started!");
+const port = 80;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
