@@ -1,7 +1,9 @@
 {
   "name": "dummyapp",
   "version": "0.0.0",
-  "node":">=18 <20",
+  "engines":  {
+    "node": ">=18 <19"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
